@@ -39,8 +39,6 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
-    - name: Cleanup Disk
-      uses: curoky/cleanup-disk-action@v2.0
           
     - name: Checkout
       uses: actions/checkout@master
