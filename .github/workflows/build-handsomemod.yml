@@ -9,15 +9,15 @@
 name: Build HandsomeMod
 
 on:
-  repository_dispatch:
-    types: helloworld
-  release:
-    types: published
-  push:
-    branches:
-      - master
-    paths:
-      - '.config'
+ # repository_dispatch:
+   # types: helloworld
+ # release:
+   # types: published
+ # push:
+   # branches:
+     # - master
+   # paths:
+     # - '.config'
 #  schedule:
 #    - cron: 0 8 * * 5
  # watch:
