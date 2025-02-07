@@ -20,8 +20,9 @@ on:
       - '.config'
 #  schedule:
 #    - cron: 0 8 * * 5
-  watch:
-    types: started
+ # watch:
+   # types: started
+   workflow_dispatch:
 
 env:
   REPO_URL: https://github.com/HandsomeMod/HandsomeMod
@@ -31,7 +32,7 @@ env:
   SSH_ACTIONS: true
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
-  TZ: Asia/Shanghai
+  TZ: Asia/Jakarta
 
 jobs:
   build:
@@ -39,6 +40,9 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
+
+    - name: Cleanup Disk
+      uses: Santuybe/cleanup-disk-action@v3.0
           
     - name: Checkout
       uses: actions/checkout@master
