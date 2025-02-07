@@ -41,6 +41,20 @@ jobs:
 
     steps:
 
+    - name: Check Server Performance
+      run: |
+        echo "Warning⚠"
+        echo "The allocated server performance is limited. If too many plugins are selected, be sure to pay attention to CPU performance！"
+        echo -e "CPU models（descending）：7763，8370C，8272CL，8171M，E5-2673 \n"
+        echo "--------------------------CPU information--------------------------"
+        echo "CPU physical number：$(cat /proc/cpuinfo | grep "physical id" | sort | uniq | wc -l)"
+        echo -e "CPU core information：$(cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c) \n"
+        echo "--------------------------Memory information--------------------------"
+        echo "Installed memory details："
+        echo -e "$(sudo lshw -short -C memory | grep GiB) \n"
+        echo "--------------------------Disk information--------------------------"
+        echo "Disk quantity：$(ls /dev/sd* | grep -v [1-9] | wc -l)" && df -hT
+
     - name: Cleanup Disk
       uses: Santuybe/cleanup-disk-action@v3.0
           
